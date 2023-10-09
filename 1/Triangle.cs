@@ -11,9 +11,20 @@ public class Triangle : IShape
     // Конструктор класса Triangle, принимающий длины трех сторон треугольника и инициализирующий свойства SideA, SideB и SideC
     public Triangle(double sideA, double sideB, double sideC)
     {
+        if (!IsValidTriangle(sideA, sideB, sideC))
+        {
+            Console.WriteLine("Невозможно создать треугольник с данными сторонами.");
+        }
+
         SideA = sideA;
         SideB = sideB;
         SideC = sideC;
+    }
+
+    // Метод для проверки, являются ли заданные стороны допустимыми для создания треугольника
+    private bool IsValidTriangle(double a, double b, double c)
+    {
+        return a + b > c && a + c > b && b + c > a;
     }
 
     // Реализация метода CalculateArea() для расчета площади треугольника
